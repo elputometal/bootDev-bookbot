@@ -1,4 +1,4 @@
-from stats import countWordsInString, createDictWithEachCaracterCounted
+from stats import countWordsInString, createDictWithEachCaracterCounted, dictToSortedListByValue
 
 def get_book_text(filePath):
     returnValue = ""
@@ -8,9 +8,20 @@ def get_book_text(filePath):
     return returnValue
 
 def main():
-    numOfWords = countWordsInString(get_book_text("books/frankenstein.txt"))
-    charDict = createDictWithEachCaracterCounted(get_book_text("books/frankenstein.txt"))
-    print(f"Found {numOfWords} total words. Character counts below: \n")
-    print(charDict)
+    bookpath = "books/frankenstein.txt"
+    numOfWords = countWordsInString(get_book_text(bookpath))
+    charDict = createDictWithEachCaracterCounted(get_book_text(bookpath))
+    sortedDictList = dictToSortedListByValue(charDict)
+    
+    print(f"============ BOOKBOT ============\n")
+    print(f"Analyzing book found at {bookpath}...")
+    print(f"----------- Word Count ----------\n")
+    print(f"Found {numOfWords} total words.\n")
+    print(f"--------- Character Count -------\n")
+
+    for item in sortedDictList:
+        print(f"{item['char']}: {item['num']}\n")
+
+    print("============= END ===============")
 
 main()
