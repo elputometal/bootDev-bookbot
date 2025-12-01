@@ -18,13 +18,13 @@ def createDictWithEachCaracterCounted(string):
     return charDict
 
 def dictToSortedListByValue(inputDict):
-    print(inputDict)
+    #print(inputDict)
     outputList = []
     for element in inputDict:
         dict = {"char": element, "num": inputDict[element]}
         outputList.append(dict)
-        print(dict)
+        #print(dict)
     
     outputList.sort(key=_sort_on, reverse=True)
-    print(outputList)
+    #print(outputList)
     return outputList

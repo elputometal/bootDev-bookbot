@@ -1,4 +1,5 @@
 from stats import countWordsInString, createDictWithEachCaracterCounted, dictToSortedListByValue
+import sys
 
 def get_book_text(filePath):
     returnValue = ""
@@ -9,6 +10,12 @@ def get_book_text(filePath):
 
 def main():
     bookpath = "books/frankenstein.txt"
+    if len(sys.argv) > 1:
+        bookpath = sys.argv[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
     numOfWords = countWordsInString(get_book_text(bookpath))
     charDict = createDictWithEachCaracterCounted(get_book_text(bookpath))
     sortedDictList = dictToSortedListByValue(charDict)
